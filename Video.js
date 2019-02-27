@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, requireNativeComponent, NativeModules, View, ViewPropTypes, Image, Platform, findNodeHandle} from 'react-native';
+import {StyleSheet, requireNativeComponent, NativeModules, View, ViewPropTypes, Image, Platform, findNodeHandle, UIManager} from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 import TextTrackType from './TextTrackType';
 import FilterType from './FilterType';
@@ -251,7 +251,7 @@ export default class Video extends Component {
     const isAsset = !!(uri && uri.match(/^(assets-library|ipod-library|file|content|ms-appx|ms-appdata):/));
 
     let nativeResizeMode;
-    const RCTVideoInstance = this.getViewManagerConfig('RCTVideo');
+    const RCTVideoInstance = UIManager.getViewManagerConfig('RCTVideo');
 
     if (resizeMode === VideoResizeMode.stretch) {
       nativeResizeMode = RCTVideoInstance.Constants.ScaleToFill;
